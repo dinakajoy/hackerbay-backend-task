@@ -3,6 +3,7 @@ const cors = require('cors');
 const hpp = require('hpp');
 const helmet = require('helmet');
 const authRoute = require('./routes/authRoute');
+const objectPatchRoute = require('./routes/objectPatchRoute');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRoute);
+app.use('/api/apply-patch', objectPatchRoute);
 
 app.use('*', (req, res) => {
   res.status(404).json({
