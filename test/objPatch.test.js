@@ -43,31 +43,6 @@ describe('a PATCH request to "/apply-patch"', () => {
       });
   });
 
-  it('should notify user if wrong data is entered', (done) => {
-    const wrongPatchData = {
-      objectToPa: {
-        firstName: 'Albert',
-        contactDetails: {
-          phoneNumbers: []
-        }
-      },
-      patchToApply: {
-        op: 'replace',
-        path: '/firstName',
-        value: 'Joachim'
-      }
-    };
-    chai.request(app)
-      .patch('/api/apply-patch')
-      .set({ Authorization: process.env.EXPIRED_TOKEN })
-      .send(wrongPatchData)
-      .end((err, res) => {
-        expect(res.status).to.equal(422);
-        expect(res.body.error[0].objectToPatch).to.equal('Invalid value');
-        done();
-      });
-  });
-
   it('should check if user is authenticated before applying patch', (done) => {
     chai.request(app)
       .patch('/api/apply-patch')

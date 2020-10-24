@@ -25,7 +25,7 @@ describe('On This Api', () => {
   });
 
   describe('a request to wrong route eg: /sssss', () => {
-    it('should return an error asjson object', (done) => {
+    it('should return an error as json object', (done) => {
       chai.request(app)
         .get('/sssss')
         .end((err, res) => {

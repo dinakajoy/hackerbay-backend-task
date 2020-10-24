@@ -29,14 +29,14 @@ To run in production mode run: npm start
 
 ## Running the tests
 To run test:
-npm test
+npm test - to get coverage summary
 npm run coverage - to get coverage summary
 
 ## Built With
 Node/Express - The web framework used
 
 ## Swagger API Documentation
-Access api documentation via [link]()
+Access api documentation via [link](localhost:5000/api/docs)
 
 ## Author
 [Odinaka Joy](http://dinakajoy.com)

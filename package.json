@@ -5,13 +5,16 @@
   "main": "app.js",
   "scripts": {
     "pretest": "eslint .",
-    "test": "mocha",
-    "coverage": "nyc --reporter=text npm run test",
+    "test": "nyc --reporter=text mocha --timeout 15000",
     "start": "node ./bin/www",
     "devStart": "nodemon ./bin/www"
   },
   "nyc": {
-    "exclude": "test"
+    "exclude": [
+      "test",
+      "appLogs.js",
+      "logger.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -33,7 +36,9 @@
     "helmet": "^4.1.1",
     "hpp": "^0.2.3",
     "image-thumbnail": "^1.0.11",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "swagger-ui-express": "^4.1.4",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",
