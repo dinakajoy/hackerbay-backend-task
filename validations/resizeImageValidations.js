@@ -1,8 +1,7 @@
 const { body, validationResult } = require('express-validator');
 
-const objectPatchValidationRules = () => [
-  body('objectToPatch').isLength({ min: 1 }).trim().escape(),
-  body('patchToApply').isLength({ min: 1 }).trim().escape()
+const resizeImageValidationRules = () => [
+  body('imageUrl').isURL().isLength({ min: 1 })
 ];
 
 const validate = (req, res, next) => {
@@ -19,6 +18,6 @@ const validate = (req, res, next) => {
 };
 
 module.exports = {
-  objectPatchValidationRules,
+  resizeImageValidationRules,
   validate
 };
