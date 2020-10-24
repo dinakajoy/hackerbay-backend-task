@@ -6,8 +6,12 @@
   "scripts": {
     "pretest": "eslint .",
     "test": "mocha",
+    "coverage": "nyc --reporter=text npm run test",
     "start": "node ./bin/www",
     "devStart": "nodemon ./bin/www"
+  },
+  "nyc": {
+    "exclude": "test"
   },
   "repository": {
     "type": "git",
@@ -37,6 +41,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.2.0",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "nyc": "^15.1.0"
   }
 }

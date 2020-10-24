@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('*', (req, res) => {
-  res.status(400).json({
+  res.status(404).json({
     error: 'Welcome To Our Api. Please Ensure You Entered A Correct Route!!!'
   });
 });
