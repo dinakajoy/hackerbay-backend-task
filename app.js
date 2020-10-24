@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const hpp = require('hpp');
 const helmet = require('helmet');
+const authRoute = require('./routes/authRoute');
 
 const app = express();
 
@@ -23,6 +24,8 @@ app.get('/', (req, res) => {
     success: 'YAY! Congratulations! Your Are Connected To Our Api. But, You Must Be Authorized To Continue!!!'
   });
 });
+
+app.use('/api/auth', authRoute);
 
 app.use('*', (req, res) => {
   res.status(404).json({
