@@ -1,4 +1,4 @@
-const Helpers = require('../util/Helpers');
+const Helpers = require('../utils/Helpers');
 
 exports.signin = async (request, response) => {
   const { username, password } = request.body;

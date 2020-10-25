@@ -1,0 +1,204 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "A task is to build a simple stateless microservice in Nodejs, with three major functionalities - Authentication, JSON patching, Image Thumbnail Generation",
+    "version": "1.0.0",
+    "title": "backend_task",
+    "contact": {
+      "email": "odinakajoy909@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "auth",
+      "description": "Authentication/Authoriazation endpoint"
+    },
+    {
+      "name": "apply-patch",
+      "description": "Apply Patch endpoint to patch objects"
+    },
+    {
+      "name": "resize-image",
+      "description": "Resize Image endpoint to download and resize public images"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/signin": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "allows users to signin with username and password",
+        "description": "Returns authorization token",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "signin",
+            "description": "user details to add",
+            "schema": {
+              "$ref": "#/definitions/Signin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully signin"
+          },
+          "422": {
+            "description": "Invalid input, object invalid"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/apply-patch": {
+      "patch": {
+        "tags": [
+          "apply-patch"
+        ],
+        "summary": "patches object",
+        "description": "Modifies object and returns new object",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "patch object",
+            "description": "modifies parts of an object",
+            "schema": {
+              "$ref": "#/definitions/Apply-Patch"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Patch was successful"
+          },
+          "422": {
+            "description": "Invalid input, object invalid"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/resize-image": {
+      "post": {
+        "tags": [
+          "resize-image"
+        ],
+        "summary": "Download and resizes image",
+        "description": "Download and resize image based von url specified",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "resize image",
+            "description": "Resizes specified image to 50 x 50",
+            "schema": {
+              "$ref": "#/definitions/Resize-Image"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New Image successfully created"
+          },
+          "422": {
+            "description": "Invalid input, object invalid"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Signin": {
+      "type": "object",
+      "required": [
+        "username",
+        "password"
+      ],
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Apply-Patch": {
+      "type": "object",
+      "required": [
+        "objectToPatch",
+        "patchToApply"
+      ],
+      "properties": {
+        "objectToPatch": {
+          "type": "object"
+        },
+        "patchToApply": {
+          "type": "object"
+        }
+      }
+    },
+    "Resize-Image": {
+      "type": "object",
+      "required": [
+        "imageUrl"
+      ],
+      "properties": {
+        "imageUrl": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

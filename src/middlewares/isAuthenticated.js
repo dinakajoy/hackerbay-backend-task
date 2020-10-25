@@ -1,4 +1,4 @@
-const Helpers = require('../util/Helpers');
+const Helpers = require('../utils/Helpers');
 
 module.exports = async (request, response, next) => {
   const userToken = request.headers.authorization;
