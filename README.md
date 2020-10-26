@@ -5,9 +5,9 @@ A task is to build a simple stateless microservice in Nodejs, with three major f
 
 ## Installation
 Clone the repository and cd into the project directory
-Run npm install to install all project dependencies
-Create .env file and add your details following the .env-example file
-Run npm run dev-server to start local server which will run on localhost:5000
+Run `npm install` to install all project dependencies
+Create `.env` file and add your details following the .env-example file
+Run `npm run devServer` to start local server which will run on localhost:5000
 
 ## Usage
 ### API Endpoints
@@ -19,7 +19,7 @@ Run npm run dev-server to start local server which will run on localhost:5000
 - PATCH `api/apply-patch`
 Authorization: JSON Web Token
 
-**To Transform Image**
+**To Transform Image and Create Thumbnail**
 - POST `api/resize-image`
 Authorization: JSON Web Token
 
@@ -29,14 +29,13 @@ To run in production mode run: npm start
 
 ## Running the tests
 To run test:
-npm test - to get coverage summary
-npm run coverage - to get coverage summary
+npm test - also shows test coverage summary
 
 ## Built With
 Node/Express - The web framework used
 
 ## Swagger API Documentation
-Access api documentation via [link](localhost:5000/api/docs)
+Access api documentation via localhost:5000/api/docs
 
 ## Author
 [Odinaka Joy](http://dinakajoy.com)
