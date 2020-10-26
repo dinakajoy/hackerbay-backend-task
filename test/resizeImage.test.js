@@ -35,7 +35,7 @@ describe('a POST request to "/resize-image"', () => {
     const wrongData = { imageUrl: 'sss' };
     chai.request(app)
       .post('/api/resize-image')
-      .set({ Authorization: process.env.EXPIRED_TOKEN })
+      .set({ Authorization: process.env.TOKEN })
       .send(wrongData)
       .end((err, res) => {
         expect(res.status).to.equal(422);
